@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Photogram — Photo</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1 class="brand">Photogram</h1>
+    <nav>
+      <a href="/index.html">Feed</a>
+      <a href="/creator.html">Creator</a>
+      <span id="user-info"></span>
+    </nav>
+  </header>
+
+  <main class="container">
+    <article id="photo-detail" class="photo-detail">
+      <p class="loading">Loading photo…</p>
+    </article>
+
+    <section class="rating-section">
+      <h3>Rate this photo</h3>
+      <div id="rating-stars" class="stars">
+        <span data-value="1">☆</span>
+        <span data-value="2">☆</span>
+        <span data-value="3">☆</span>
+        <span data-value="4">☆</span>
+        <span data-value="5">☆</span>
+      </div>
+      <p id="rating-summary"></p>
+    </section>
+
+    <section class="comments-section">
+      <h3>Comments</h3>
+      <form id="comment-form">
+        <textarea id="comment-input" placeholder="Leave a comment..." required></textarea>
+        <button type="submit">Post comment</button>
+      </form>
+      <div id="comments-list">
+        <p class="loading">Loading comments…</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="/js/auth.js"></script>
+  <script src="/js/api.js"></script>
+  <script src="/js/photo.js"></script>
+</body>
+</html>

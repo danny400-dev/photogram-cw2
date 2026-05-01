@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Photogram — Creator</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1 class="brand">Photogram <span class="badge">Creator</span></h1>
+    <nav>
+      <a href="/index.html">Feed</a>
+      <a href="/creator.html" class="active">Creator</a>
+      <span id="user-info"></span>
+      <a id="auth-link" href="/.auth/logout?post_logout_redirect_uri=/">Sign out</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="upload-card">
+      <h2>Upload a new photo</h2>
+      <form id="upload-form">
+        <label>Photo file
+          <input id="file-input" type="file" accept="image/*" required>
+        </label>
+        <label>Title
+          <input id="title-input" type="text" maxlength="100" required>
+        </label>
+        <label>Caption
+          <textarea id="caption-input" maxlength="500"></textarea>
+        </label>
+        <label>Location
+          <input id="location-input" type="text" maxlength="100">
+        </label>
+        <label>People present (comma separated)
+          <input id="people-input" type="text">
+        </label>
+        <button type="submit" id="upload-btn">Upload</button>
+      </form>
+      <div id="upload-status"></div>
+    </section>
+
+    <section>
+      <h2>My uploads</h2>
+      <div id="my-uploads" class="grid">
+        <p class="loading">Loading…</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="/js/auth.js"></script>
+  <script src="/js/api.js"></script>
+  <script src="/js/creator.js"></script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Photogram — Photo Sharing Platform</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1 class="brand">Photogram</h1>
+    <nav>
+      <a href="/index.html" class="active">Feed</a>
+      <a href="/creator.html">Creator</a>
+      <span id="user-info"></span>
+      <a id="auth-link" href="/.auth/login/aad?post_login_redirect_uri=/">Sign in</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="search-bar">
+      <input id="search-input" type="text" placeholder="Search by tag, location, or caption...">
+      <button id="search-btn">Search</button>
+    </section>
+
+    <section id="feed" class="grid">
+      <p class="loading">Loading photos…</p>
+    </section>
+  </main>
+
+  <script src="/js/auth.js"></script>
+  <script src="/js/api.js"></script>
+  <script src="/js/feed.js"></script>
+</body>
+</html>

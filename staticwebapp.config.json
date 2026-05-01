@@ -1,0 +1,38 @@
+{
+  "routes": [
+    {
+      "route": "/creator.html",
+      "allowedRoles": ["creator", "authenticated"]
+    },
+    {
+      "route": "/api/photos-create",
+      "allowedRoles": ["creator", "authenticated"]
+    },
+    {
+      "route": "/api/photos-mine",
+      "allowedRoles": ["creator", "authenticated"]
+    }
+  ],
+  "responseOverrides": {
+    "401": {
+      "redirect": "/.auth/login/aad?post_login_redirect_uri=/creator.html",
+      "statusCode": 302
+    }
+  },
+  "navigationFallback": {
+    "rewrite": "/index.html",
+    "exclude": ["/css/*", "/js/*", "/api/*"]
+  },
+  "auth": {
+    "rolesSource": "/api/get-roles",
+    "identityProviders": {
+      "azureActiveDirectory": {
+        "registration": {
+          "openIdIssuer": "https://login.microsoftonline.com/common/v2.0",
+          "clientIdSettingName": "AAD_CLIENT_ID",
+          "clientSecretSettingName": "AAD_CLIENT_SECRET"
+        }
+      }
+    }
+  }
+}
