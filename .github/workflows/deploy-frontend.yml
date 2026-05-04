@@ -1,0 +1,32 @@
+name: Deploy Frontend to Azure Storage
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/**'
+      - '.github/workflows/deploy-frontend.yml'
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Upload to Azure Storage $web container
+        uses: azure/CLI@v2
+        with:
+          azcliversion: latest
+          inlineScript: |
+            az storage blob upload-batch \
+              --source ./src \
+              --destination '$web' \
+              --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT }} \
+              --account-key ${{ secrets.AZURE_STORAGE_KEY }} \
+              --overwrite
+
+      - name: Deployment summary
+        run: |
+          echo "Frontend deployed to https://${{ secrets.AZURE_STORAGE_ACCOUNT }}.z1.web.core.windows.net/"
